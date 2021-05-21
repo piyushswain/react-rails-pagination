@@ -1,6 +1,6 @@
 {
   "name": "react-rails-pagination",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React Component for adding Pagination support to Rails or any other MVC Framework",
   "main": "index.js",
   "directories": {
@@ -17,6 +17,11 @@
   "author": {
     "name": "Piyush Swain",
     "email": "piyush.swain3@gmail.com"
+  },
+  "homepage": "https://github.com/piyushswain/react-rails-pagination",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/piyushswain/react-rails-pagination.git"
   },
   "private": false,
   "dependencies": {
