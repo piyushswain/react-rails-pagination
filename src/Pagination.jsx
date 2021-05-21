@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './index.css';
 
 class Pagination extends React.Component {
   constructor(props) {
@@ -7,6 +8,10 @@ class Pagination extends React.Component {
     const { page, path } = this.props;
     this.path = path === '' ? `${window.location.pathname}?page=` : `${path}?page=`;
     this.state = { page: parseInt(page) };
+  }
+
+  componentDidMount() {
+    console.log('Pagination Mounted');
   }
 
   static getDerivedStateFromProps(props) {

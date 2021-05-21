@@ -1,7 +1,4 @@
-import React from 'react';
-import './index.css';
 import Pagination from './Pagination.jsx';
-
 
 const Index = () => {
   return {
@@ -9,4 +6,4 @@ const Index = () => {
   }
 }
 
-export default Index;
+export default Pagination;
