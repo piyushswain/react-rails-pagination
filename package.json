@@ -1,11 +1,8 @@
 {
   "name": "react-rails-pagination",
-  "version": "1.0.1",
+  "version": "1.1.2",
   "description": "React Component for adding Pagination support to Rails or any other MVC Framework",
   "main": "index.js",
-  "directories": {
-    "test": "test"
-  },
   "keywords": [
     "react",
     "rails",
@@ -25,21 +22,12 @@
   },
   "private": false,
   "dependencies": {
-    "@babel/runtime": "^7.14.0",
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
-    "web-vitals": "^1.0.1"
+    "react-dom": "^17.0.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "rollup -c",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build": "rollup -c"
   },
   "eslintConfig": {
     "extends": [
