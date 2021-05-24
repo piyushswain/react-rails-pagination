@@ -1,6 +1,6 @@
 {
   "name": "react-rails-pagination",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "React Component for adding Pagination support to Rails or any other MVC Framework",
   "main": "src/index.js",
   "module": "dist/index.esm.js",
