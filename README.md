@@ -1,8 +1,9 @@
 # react-rails-pagination
 
 - [Intro](#intro)
-- [Installation](#install)
+- [Installation](#installation)
 - [Example](#example)
+- [Props](#props)
 
 
 ## Intro
@@ -44,9 +45,9 @@ const fetchTableData = () => {
   });
 };
 
-handleChangePage(currentPage) {         // Required as a prop to update data in your table.
-  setPage(parseInt(currentPage));
-  fetchTableData();
+handleChangePage(currentPage) {  // Required as a prop to update data in your table.
+  setPage(parseInt(currentPage)); // Update Current Page
+  fetchTableData(); // Fetch Data for the new page
 };
 
 const MyComponent = () => {
@@ -55,9 +56,9 @@ const MyComponent = () => {
 
   return (
     <>
-      <h3 className="mt-4">Upcoming Events</h3>
-      <table className="table table-borderless table-hover">
-        <thead className="thead-light">
+      <h3>Upcoming Events</h3>
+      <table>
+        <thead>
           <tr>
             <th scope="col">#</th>
             <th scope="col">Name</th>
@@ -75,3 +76,13 @@ const MyComponent = () => {
   );
 };
 ```
+
+## Props
+
+| Name                     | Type       | Description                                                                                  |
+| ------------------------ | ---------- | -------------------------------------------------------------------------------------------- |
+| `page`                   | `Number`   | **Required.** The current active page.                                                       |
+| `pages`                  | `Number`   | **Required.** The Total number of pages available.                                           |
+| `handleChangePage`       | `Function` | **Required.** A function that handles what happens when current active page is changed. Refer to example for demo usage |
+| `hideEndArrows`          | `Boolean`  | Hide buttons that allow jumping to `Last` and `First` page                                   |
+| `hideNavButtons`         | `Boolean`  | Hide buttons that allow navigation to `Next` and `Previous` page                             |
