@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './index.css';
+import './index.css.scss';
 
 class Pagination extends React.Component {
   constructor(props) {
@@ -8,10 +8,6 @@ class Pagination extends React.Component {
     const { page, path } = this.props;
     this.path = path === '' ? `${window.location.pathname}?page=` : `${path}?page=`;
     this.state = { page: parseInt(page) };
-  }
-
-  componentDidMount() {
-    console.log('Pagination Mounted');
   }
 
   static getDerivedStateFromProps(props) {
@@ -50,9 +46,15 @@ class Pagination extends React.Component {
     } else if (pageNumber === '...') {
       pagePath = '';
       canClick = false;
+    } else if (pageNumber === '<<') {
+      pageNumber = 1;
+      pagePath = `${this.path}${pageNumber}`;
+    } else if (pageNumber === '>>') {
+      pageNumber = pages;
+      pagePath = `${this.path}${pageNumber}`;
     }
 
-    if (pageNumber === page) {
+    if (pageNumber === page && (displayName === '>>' || displayName === '<<')) {
       canClick = false;
     }
 
@@ -60,7 +62,7 @@ class Pagination extends React.Component {
       <li key={index} className={number === page ? 'active' : ''}>
         <a
           href={pagePath}
-          style={canClick ? null : { pointerEvents: 'none' }}
+          class={canClick ? null : 'disabled'}
           onClick={(e) => this.changePage(e, pagePath, pageNumber)}
         >
           {displayName}
@@ -73,6 +75,7 @@ class Pagination extends React.Component {
     const self = this;
     const { page } = self.state;
     const lastPage = self.props.pages;
+    const { hideEndArrows, hideNavButtons } = self.props;
     const pageLinks = [];
     const maxElements = 3;
     const edgeElementCount = 3;
@@ -101,15 +104,23 @@ class Pagination extends React.Component {
         if (!renderedPages.includes(i)) renderedPages.unshift(i);
       }
     }
-    renderedPages.unshift('Prev');
-    renderedPages.push('Next');
+
+    if (!hideNavButtons) {
+      renderedPages.unshift('Prev');
+      renderedPages.push('Next');
+    }
+
+    if (!hideEndArrows) {
+      renderedPages.unshift('<<');
+      renderedPages.push('>>');
+    }
 
     renderedPages.forEach((singlePage, index) => {
-      if ((singlePage > 0 && singlePage <= lastPage) || singlePage === '...' || singlePage === 'Prev' || singlePage === 'Next') pageLinks.push(self.paginationElement(singlePage, index));
+      if ((singlePage > 0 && singlePage <= lastPage) || singlePage === '...' || singlePage === 'Prev' || singlePage === 'Next' || singlePage === '>>' || singlePage === '<<') pageLinks.push(self.paginationElement(singlePage, index));
     });
 
     return (
-      <ul className="pagination">
+      <ul className="rails-pagination">
         {pageLinks}
       </ul>
     );
@@ -121,10 +132,14 @@ Pagination.propTypes = {
   pages: PropTypes.number.isRequired,
   handleChangePage: PropTypes.func.isRequired,
   path: PropTypes.string,
+  hideEndArrows: PropTypes.bool,
+  hideNavButtons: PropTypes.bool,
 };
 
 Pagination.defaultProps = {
   path: '',
+  hideEndArrows: false,
+  hideNavButtons: false,
 };
 
 export default Pagination;
