@@ -3,7 +3,7 @@
 - [Intro](#intro)
 - [Installation](#installation)
 - [Examples](#examples)
-- [Usage] (#usage)
+- [Usage](#usage)
 - [Props](#props)
 
 
