@@ -16,6 +16,19 @@ class Pagination extends React.Component {
     };
   }
 
+  getAdditionalClasses() {
+    const { outline, color } = this.props;
+    const prefix = 'rails-pagination';
+    let classes = '';
+    if (outline) classes += '-' + 'outline';
+
+    if (color) classes += '-' + color;
+
+    if (classes) classes = prefix + classes;
+
+    return classes;
+  }
+
   changePage(event, pagePath, pageNumber) {
     const { handleChangePage } = this.props;
     event.preventDefault();
@@ -62,7 +75,7 @@ class Pagination extends React.Component {
       <li key={index} className={number === page ? 'active' : ''}>
         <a
           href={pagePath}
-          class={canClick ? null : 'disabled'}
+          className={`${canClick ? null : 'disabled'} ${displayName === '...' ? 'separator' : ''}`}
           onClick={(e) => this.changePage(e, pagePath, pageNumber)}
         >
           {displayName}
@@ -80,6 +93,7 @@ class Pagination extends React.Component {
     const maxElements = 3;
     const edgeElementCount = 3;
     const renderedPages = [];
+    const additionalClass = self.getAdditionalClasses();
 
     for (let i = page - maxElements; i <= page + maxElements; i += 1) {
       if (!renderedPages.includes(i)) renderedPages.push(i);
@@ -120,7 +134,7 @@ class Pagination extends React.Component {
     });
 
     return (
-      <ul className="rails-pagination">
+      <ul className={`rails-pagination ${additionalClass}`}>
         {pageLinks}
       </ul>
     );
@@ -134,12 +148,16 @@ Pagination.propTypes = {
   path: PropTypes.string,
   hideEndArrows: PropTypes.bool,
   hideNavButtons: PropTypes.bool,
+  outline: PropTypes.bool,
+  color: PropTypes.string,
 };
 
 Pagination.defaultProps = {
   path: '',
   hideEndArrows: false,
   hideNavButtons: false,
+  outline: false,
+  color: '',
 };
 
 export default Pagination;
