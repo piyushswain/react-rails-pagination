@@ -37,16 +37,14 @@
   border-bottom-right-radius:4px
 }
 
-.rails-pagination>li>a:hover,
-.rails-pagination>li>a:focus {
+.rails-pagination>li>a:hover {
   color: $blue-navy;//#23527c;
   background-color: $gray-border;//#eee;
   border-color: $gray-border;//#ddd;
 }
 
 .rails-pagination>.active>a,
-.rails-pagination>.active>a:hover,
-.rails-pagination>.active>a:focus {
+.rails-pagination>.active>a:hover {
   z-index:2;
   color: $white;//#fff;
   cursor:default;
@@ -60,8 +58,7 @@
 }
 
 .rails-pagination > .disabled >a,
-.rails-pagination > .disabled >a:hover,
-.rails-pagination > .disabled >a:focus {
+.rails-pagination > .disabled >a:hover {
   color:#777;
   cursor:not-allowed;
   background-color:#fff;
