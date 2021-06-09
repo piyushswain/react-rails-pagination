@@ -72,10 +72,10 @@ class Pagination extends React.Component {
     }
 
     return (
-      <li key={index} className={number === page ? 'active' : ''}>
+      <li key={index} className={number === page ? 'active' : 'inactive'}>
         <a
           href={pagePath}
-          className={`${canClick ? null : 'disabled'} ${displayName === '...' ? 'separator' : ''}`}
+          className={`${canClick ? '' : 'disabled'} ${displayName === '...' ? 'separator' : ''}`}
           onClick={(e) => this.changePage(e, pagePath, pageNumber)}
         >
           {displayName}
